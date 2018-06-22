@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @company.name %>
+</p>
+
+<div class="well">
+  <%= form_with(model: [ @company, @employee ], local: true) do |form| %>
+    <%= form.hidden_field :company_id, value: @company.id %>
+    <%= form.label :first_name %>
+    <%= form.text_field :first_name, id: :first_name %>
+
+    <%= form.label :last_name %>
+    <%= form.text_field :last_name, id: :last_name %>
+
+    <%= form.label :email %>
+    <%= form.text_field :email, id: :email %>
+    <%-# falta indicar el select a area -%>
+    <%= form.label :area %>
+    <%= form.text_field :area, id: :area %>
+
+
+    <%= form.submit "Crear", class:'btn btn-info'  %>
+  <% end %>
+</div>
+
+<%= link_to 'Edit', edit_company_path(@company) %> |
+<%= link_to 'Back', companies_path %>

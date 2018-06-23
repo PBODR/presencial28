@@ -1,9 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @company.name %>
-</p>
+<h1>Nuevo empleado</h1>
 
 <div class="well">
   <%= form_with(model: [ @company, @employee ], local: true) do |form| %>

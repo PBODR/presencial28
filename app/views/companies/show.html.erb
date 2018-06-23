@@ -17,8 +17,8 @@
     <%= form.label :email %>
     <%= form.text_field :email, id: :email %>
     <%-# falta indicar el select a area -%>
-    <%= form.label :area %>
-    <%= form.text_field :area, id: :area %>
+    <%= form.label :area_id %>
+    <%= form.select :area_id, Area.pluck(:name, :id) %>
 
 
     <%= form.submit "Crear", class:'btn btn-info'  %>
@@ -27,3 +27,24 @@
 
 <%= link_to 'Edit', edit_company_path(@company) %> |
 <%= link_to 'Back', companies_path %>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>First_name</th>
+      <th>Last_name</th>
+      <th>Area</th>
+      <th>Destroy</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @company.employees.each do |e| %>
+      <tr>
+        <td><%= e.first_name %></td>
+        <td><%= e.last_name %></td>
+        <td><%= e.area.name %></td>
+        <td><%= link_to 'Destroy', company_employee_path(@company, e.id), method: :delete %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
